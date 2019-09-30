@@ -1,0 +1,46 @@
+package ar.edu.uno.trabajo.practico;
+
+public class Soldado extends Unidad{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	private Integer ep;
+	
+	public Soldado() {
+		super();
+		this.setEp(0);
+	}
+	
+	public Soldado(Integer x,Integer y) {
+		this.setHp(200);
+		this.setP_atk(10);
+		this.setEp(100);
+		this.setX(x);
+		this.setY(y);
+		
+	}
+	
+	public void atack(Unidad b) {
+		if (this.distance(b)==1) {
+			b.setHp(getHp()-this.getP_atk());	
+		}
+		System.out.println("It out of Range");
+	}
+	
+	public int distance(Unidad b){
+		
+	}
+
+	public Integer getEp() {
+		return ep;
+	}
+
+	public void setEp(Integer ep) {
+		this.ep = ep;
+	}
+	
+	
+}
