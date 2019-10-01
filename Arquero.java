@@ -4,12 +4,17 @@ public class Arquero extends Unidad {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Unidad a = new Arquero(5,2);
+		Arquero a = new Arquero(5,2);
 		Unidad b = new Arquero(1,2);
 		System.out.println("b:"+b);
 		System.out.println("a:"+a);
 		a.atack(b);
 		System.out.println("b:"+b);
+		System.out.println("a:"+a);
+		a.paquete();
+		System.out.println("a:"+a);
+		a.paquete();
+		a.paquete();
 		System.out.println("a:"+a);
 		
 		
@@ -25,7 +30,7 @@ public class Arquero extends Unidad {
 	public Arquero(Integer x, Integer y) {
 		this.setHp(50);
 		this.setP_atk(5);
-		this.setArrows(20);
+		this.setArrows(14);
 		this.setX(x);
 		this.setY(y);
 	}
@@ -45,6 +50,14 @@ public class Arquero extends Unidad {
 		int x = (int) Math.sqrt(Math.pow((this.getX()-b.getX()),2)+Math.pow((this.getY()-b.getY()),2));
 		return x;
 	}
+	
+	public void paquete() {
+		if(this.getArrows()<=14) {
+			this.setArrows(getArrows()+6);
+		}
+		else this.setArrows(20);
+	}
+	
 	public Integer getArrows() {
 		return arrows;
 	}
@@ -59,3 +72,4 @@ public class Arquero extends Unidad {
 	}
 		
 }
+
