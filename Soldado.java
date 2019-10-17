@@ -43,7 +43,7 @@ public class Soldado extends Unidad{
 		if(this.dead()||b.dead())	return;
 		if (this.calcuDistance(b)) {
 			if(this.tengoEp()) {
-				b.setHp(b.getHp()-this.getP_atk());
+				b.quitarHp(this.getP_atk());
 				ep=this.getEp()-10;
 			}	 
 		}
