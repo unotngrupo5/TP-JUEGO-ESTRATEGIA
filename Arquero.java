@@ -10,6 +10,8 @@ public class Arquero extends Unidad {
 		System.out.println("a:"+a);
 		a.atack(b);
 		System.out.println("b:"+b);
+		a.atack(b);
+		System.out.println("b:"+b);
 		System.out.println("a:"+a);
 		a.paquete();
 		System.out.println("a:"+a);
@@ -21,28 +23,27 @@ public class Arquero extends Unidad {
 	}
 
 	private Integer arrows;
+	private static Integer hp=5;
+	private static final Integer p_atk=5;
+	private static final Integer DMIN=2;
+	private static final Integer DMAX=5;
 	
 	
 	public Arquero(Integer x, Integer y) {
-		super(x,y);
-		this.setHp(50);
-		this.setP_atk(5);
-		this.setArrows(14);
+		super(x,y,hp,p_atk,DMAX,DMIN);	
+		this.setArrows(20);
 	}
 
 	public void atack(Unidad b) {
-		if(this.dead()==true) {
-			System.out.println("La unidad esta muerta");
-			return;
-		}
-		if (this.distance(b)<=5 && this.distance(b)>=2) {
+		if(this.equals(b)) return;
+		if(this.dead()||b.dead())	return;	
+		if (this.calcuDistance(b)) {
 			if(this.getArrows()!=0) {
 				b.setHp(b.getHp()-this.getP_atk());
 				this.setArrows(this.getArrows()-1);
 			}	
 			else System.out.println("I need more arrows");
 		}
-		else System.out.println("It out of Range");
 	}
 	
 	public void paquete() {
@@ -50,6 +51,9 @@ public class Arquero extends Unidad {
 			this.setArrows(getArrows()+6);
 		}
 		else this.setArrows(20);
+	}
+	
+	public void pocionA(){
 	}
 	
 	public Integer getArrows() {
@@ -66,4 +70,3 @@ public class Arquero extends Unidad {
 	}
 		
 }
-
