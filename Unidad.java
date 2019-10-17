@@ -81,6 +81,11 @@ public abstract class Unidad {
 		}
 		return false;
 	}
+	
+	public void quitarHp(Integer a) {
+		if (a<=this.getHp()) this.setHp(getHp()-a);
+		this.setHp(0);
+	}
 
 	public abstract void pocionA();
 
