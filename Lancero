@@ -12,20 +12,30 @@ public class Lancero extends Unidad{
 		System.out.println(b);
 	}
 
+	private static Integer hp=150;
+	private static final Integer p_atk=25;
+	private static final Integer DMIN=1;
+	private static final Integer DMAX=3;
+	
 	public Lancero (Integer x, Integer y) {
-		super(x, y);
-		this.setHp(150);
-		this.setP_atk(25);
+		super(x,y,hp,p_atk,DMAX,DMIN);	
 	}
 	
 	public void atack(Unidad b) {
-		if(this.dead()==true) {
-			System.out.println("La unidad esta muerta");
-			return;
-		}
-		if (this.distance(b)<=3 && this.distance(b)>=1) {
+		if(this.equals(b)) return;
+		if(this.dead()||b.dead())	return;		
+		if (this.calcuDistance(b)) {
 			b.setHp(b.getHp()-this.getP_atk());
 		}
-		else System.out.println("It out of Range");
-	}	
+	}
+	
+	public void pocionA(){
+	}
+	
+	public void paquete() {
+	}
+	
+	public String toString() {
+		return super.toString() + "Lancero";
+	}
 }
