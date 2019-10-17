@@ -25,7 +25,7 @@ public class Lancero extends Unidad{
 		if(this.equals(b)) return;
 		if(this.dead()||b.dead())	return;		
 		if (this.calcuDistance(b)) {
-			b.setHp(b.getHp()-this.getP_atk());
+			b.quitarHp(this.getP_atk());
 		}
 	}
 	
