@@ -54,7 +54,7 @@ public class Caballero extends Unidad{
 		this.revelde();
 		if (this.calcuDistance(b)) {
 			if (this.isHorse()!=true) {
-				b.setHp(b.getHp()-this.getP_atk());
+				b.quitarHp(this.getP_atk());
 				this.setCont(cont+1);
 			}
 			else System.out.println("El caballo esta revelde");
