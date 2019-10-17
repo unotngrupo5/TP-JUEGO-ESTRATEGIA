@@ -39,7 +39,7 @@ public class Arquero extends Unidad {
 		if(this.dead()||b.dead())	return;	
 		if (this.calcuDistance(b)) {
 			if(this.getArrows()!=0) {
-				b.setHp(b.getHp()-this.getP_atk());
+				b.quitarHp(this.getP_atk());
 				this.setArrows(this.getArrows()-1);
 			}	
 			else System.out.println("I need more arrows");
