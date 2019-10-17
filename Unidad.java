@@ -11,13 +11,18 @@ public abstract class Unidad {
 	private Integer p_atk;
 	private Integer x;
 	private Integer y;
+	private Integer dmax;
+	private Integer dmin;
 
 
-	public Unidad(Integer x,Integer y) {
+
+	public Unidad(Integer x,Integer y, Integer hp, Integer p_atk, Integer dmax, Integer dmin) {
 		this.setX(x);
 		this.setY(y);
-		this.setHp(0);
-		this.setP_atk(0);
+		this.setHp(hp);
+		this.setP_atk(p_atk);
+		this.setDmax(dmax);
+		this.setDmin(dmin);
 	}
 
 	public abstract void atack(Unidad b);
@@ -39,10 +44,7 @@ public abstract class Unidad {
 	}
 
 	public void move(String msg) {
-		if(this.dead()==true) {
-			System.out.println("La unidad esta muerta");
-			return;
-		}
+		if(this.dead()) return;
 		if(msg.matches("^[cC][SsEeNnOo]*[fF]$")){
 			for (int i=1;i<msg.length();i++) {
 				if (msg.charAt(i)=='n'||msg.charAt(i)=='N'){
@@ -66,10 +68,33 @@ public abstract class Unidad {
 		return x;
 	}
 
-	public boolean dead() {
-		if (this.getHp()<=0) return true;
+	public boolean calcuDistance(Unidad b) {
+		if(this.distance(b)>=this.getDmin() && this.distance(b)<=this.getDmax()) return true;
+		System.out.println("It out of Range");
 		return false;
 	}
+
+	protected boolean dead() {
+		if (this.getHp()<=0) {
+			System.out.println("The Unit is dead!");
+			return true;
+		}
+		return false;
+	}
+
+	public abstract void pocionA();
+
+	public abstract void paquete();
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			System.out.println("I will not hit me");
+			return true;
+		}
+		return false;
+	}
+
 	public Integer getHp() {
 		return hp;
 	}
@@ -102,8 +127,26 @@ public abstract class Unidad {
 		this.y = y;
 	}
 
+
+	public Integer getDmax() {
+		return dmax;
+	}
+
+	public void setDmax(Integer dmax) {
+		this.dmax = dmax;
+	}
+
+	public Integer getDmin() {
+		return dmin;
+	}
+
+	public void setDmin(Integer dmin) {
+		this.dmin = dmin;
+	}
+
 	@Override
 	public String toString() {
 		return "Unidad [hp=" + hp + ", p_atk=" + p_atk + ", x=" + x + ", y=" + y + "]";
 	}
+
 }
